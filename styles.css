@@ -65,7 +65,7 @@ body {
     box-sizing: border-box; 
     width: 100%;
     max-width: 400px;
-    height: 600px; 
+    height: 550px; 
     padding: 250px 50px;
     position: relative; /* Позволяет элементам внутри использовать абсолютные позиции */
 }
@@ -125,7 +125,15 @@ h2 {
 }
 
 .footer-text {
-    margin-top: auto; /* Автоматический отступ сверху, чтобы текст переместился вниз */
+    display: flex;
+    box-sizing: border-box; 
+    justify-content: center; 
+    align-items: center;
+    width: 60%;
+    margin-top: 100px; 
+    margin-left: auto;
+    margin-right: auto;
+
 }
 
 .bottom-icon {
