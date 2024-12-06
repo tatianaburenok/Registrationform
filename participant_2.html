@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="font/stylesheet.css"> 
+    <link rel="stylesheet" href="style.css"> 
+
+    <title>Registration Form</title>
+</head>
+
+<body>
+    <div class="registration-form">
+        <form id="registrationForm">
+            <h2>Информация об участниках</h2>
+            <div class="form-group">
+                <input type="text" id="uch2Name" name="uch2Name" placeholder="Введите ФИО участника 2..." required>
+                <div class="error-message" id="uch2NameError"></div>
+            </div>
+            <div class="form-group">
+                <input type="number" id="uch2Class" name="uch2Class" placeholder="Введите класс..." required>
+                <div class="error-message" id="uch2ClassError"></div>
+            </div>
+            <div class="form-group">
+                <input type="email" id="uch2email" name="uch2email" placeholder="Введите email участника 2..." required>
+                <div class="error-message" id="uch2emailError"></div>
+            </div>
+            <div class="form-group">
+                <input type="tel" id="uch2phoneNumber" name="uch2phoneNumber" placeholder="Введите телефон участника 2..." required>
+                <div class="error-message" id="uch2phoneNumberError"></div>
+            </div>
+            <button type="submit">Далее</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('registrationForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            // Очистка предыдущих сообщений об ошибках
+            const errorMessages = document.querySelectorAll('.error-message');
+            errorMessages.forEach(error => error.textContent = '');
+
+            let valid = true;
+
+            // Универсальная функция валидации полей
+            function validateField(id, errorId, validationFn) {
+                const value = document.getElementById(id).value.trim();
+                const errorMessage = validationFn(value);
+                if (errorMessage) {
+                    document.getElementById(errorId).textContent = errorMessage;
+                    valid = false;
+                }
+            }
+
+            // Функции валидации
+            const isNotEmpty = value => {
+                if (value.trim().length === 0) {
+                return 'Поле обязательно к заполнению';
+            }
+            };
+
+            const isEmailValid = value => !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value) ? 'Введите корректный адрес электронной почты.' : '';
+            const isPhoneValid = value => !/^\+\d{11,}$/.test(value) ? 'Введите корректный номер телефона' : '';
+            const isClassValid = value => {
+                const number = parseInt(value, 10);
+                if (isNaN(number) || number < 1 || number > 11) {
+                return 'Значение должно быть числом от 1 до 11.';
+                }
+                return '';
+            };
+
+            // Проверка значений полей
+            validateField('uch2Name', 'uch2NameError', isNotEmpty);
+            validateField('uch2Class', 'uch2ClassError', isClassValid);
+            validateField('uch2email', 'uch2emailError', isEmailValid);
+            validateField('uch2phoneNumber', 'uch2phoneNumberError', isPhoneValid);
+            
+            // Если все поля валидны, выполняем переход на следующую страницу
+            if (valid) {
+                window.location.href = 'participant_3.html'; // Переход на следующую страницу
+            }
+        });
+
+    </script>
+</body>
+
+</html>

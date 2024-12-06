@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="font/stylesheet.css"> 
+    <link rel="stylesheet" href="style.css"> 
+
+    <title>Registration Form</title>
+</head>
+
+<body>
+    <div class="registration-form">
+        <form id="registrationForm">
+            <h2>Информация об участниках</h2>
+            <div class="form-group">
+                <input type="text" id="uch3Name" name="uch3Name" placeholder="Введите ФИО участника 3..." required>
+                <div class="error-message" id="uch3NameError"></div>
+            </div>
+            <div class="form-group">
+                <input type="number" id="uch3Class" name="uch3Class" placeholder="Введите класс..." required>
+                <div class="error-message" id="uch3ClassError"></div>
+            </div>
+            <div class="form-group">
+                <input type="email" id="uch3email" name="uch3email" placeholder="Введите email участника 3..." required>
+                <div class="error-message" id="uch3emailError"></div>
+            </div>
+            <div class="form-group">
+                <input type="tel" id="uch3phoneNumber" name="uch3phoneNumber" placeholder="Введите телефон участника 3..." required>
+                <div class="error-message" id="uch3phoneNumberError"></div>
+            </div>
+            <button type="submit" id="nextButton">Далее</button>
+            <button type="button" id="noParticipantButton">Нет участника</button>
+        </form>
+    </div>
+
+    <script>
+        // Обработка формы при нажатии на кнопку "Далее"
+        document.getElementById('registrationForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            // Очистка предыдущих сообщений об ошибках
+            const errorMessages = document.querySelectorAll('.error-message');
+            errorMessages.forEach(error => error.textContent = '');
+
+            let valid = true;
+
+            // Универсальная функция валидации полей
+            function validateField(id, errorId, validationFn) {
+                const value = document.getElementById(id).value.trim();
+                const errorMessage = validationFn(value);
+                if (errorMessage) {
+                    document.getElementById(errorId).textContent = errorMessage;
+                    valid = false;
+                }
+            }
+
+            // Функции валидации
+            const isNotEmpty = value => value.trim().length === 0 ? 'Поле обязательно к заполнению' : '';
+            const isEmailValid = value => !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value) ? 'Введите корректный адрес электронной почты.' : '';
+            const isPhoneValid = value => !/^\+\d{11,}$/.test(value) ? 'Введите корректный номер телефона' : '';
+            const isClassValid = value => {
+                const number = parseInt(value, 10);
+                return (isNaN(number) || number < 1 || number > 11) ? 'Значение должно быть числом от 1 до 11.' : '';
+            };
+
+            // Проверка значений полей
+            validateField('uch3Name', 'uch3NameError', isNotEmpty);
+            validateField('uch3Class', 'uch3ClassError', isClassValid);
+            validateField('uch3email', 'uch3emailError', isEmailValid);
+            validateField('uch3phoneNumber', 'uch3phoneNumberError', isPhoneValid);
+            
+            // Если все поля валидны, выполняем переход на следующую страницу
+            if (valid) {
+                window.location.href = 'photo.html'; // Переход на следующую страницу
+            }
+        });
+
+        // Обработка кнопки "Нет участника"
+        document.getElementById('noParticipantButton').addEventListener('click', function () {
+            window.location.href = 'photo.html'; // Переход на следующую страницу без проверок
+        });
+    </script>
+</body>
+
+</html>
