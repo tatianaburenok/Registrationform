@@ -42,7 +42,7 @@ table {
 	border-spacing: 0;
 }
 a {
-    font-style: italic; /* Делаем текст курсивом */
+    font-style: italic;
     color: #ffffff;
     text-decoration: none;
 }
@@ -53,14 +53,14 @@ a {
 body {
     height: 100vh; /* Устанавливаем высоту на 100% высоты окна */
     overflow: hidden; /* Убираем скроллинг */
-    display: flex; /* Используем flexbox для размещения содержимого */
+    display: flex; 
     justify-content: center; /* Центрируем по горизонтали */
     align-items: center; /* Центрируем по вертикали */
-    font-family: 'Inter'; /* Задаем шрифт */
-    background-color: #4c00ce; /* Цвет фона */
-    color: white; /* Цвет текста */
-    font-size: 12px; /* Размер шрифта */
-    text-align: center; /* Центрируем текст */
+    font-family: 'Inter'; 
+    background-color: #4c00ce; 
+    color: white; 
+    font-size: 12px; 
+    text-align: center; 
 }
 
 .registration-form {
@@ -123,10 +123,10 @@ h2 {
 
 .corner-image {
     position: absolute; 
-    top: -30px;
+    top: -40px;
     right: -50px; 
-    width: 250px; /* Ширина изображение */
-    height: auto; /* Сохраняем пропорции изображения */
+    width: 250px; 
+    height: auto; 
 }
 
 .footer-text {
@@ -142,20 +142,20 @@ h2 {
 
 .bottom-icon-menu {
     position: absolute; 
-    bottom: 10px; /* Положение иконки 10px выше нижнего края формы */
+    bottom: 60px; 
     left: 50%; /* Центрирование по горизонтали */
     transform: translateX(-50%); /* Смещение влево на 50% для центрирования */
-    width: 30px; /* Ширина иконки */
-    height: auto; /* Сохранение пропорций */
+    width: 30px; 
+    height: auto; 
 }
 
 .bottom-icon-cross {
     position: absolute; 
-    bottom: 10px; /* Положение иконки 10px выше нижнего края формы */
+    bottom: 60px; 
     left: 50%; /* Центрирование по горизонтали */
     transform: translateX(-50%); /* Смещение влево на 50% для центрирования */
-    width: 25px; /* Ширина иконки */
-    height: auto; /* Сохранение пропорций */
+    width: 25px; 
+    height: auto; 
 }
 
 .link {
@@ -165,5 +165,5 @@ h2 {
 h6 {
     margin-top: 10px;
     margin-bottom: 30px;
-    font-size: 16px; /* Размер шрифта */
+    font-size: 16px; 
 }
