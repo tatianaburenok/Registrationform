@@ -123,9 +123,9 @@ h2 {
 
 .corner-image {
     position: absolute; 
-    top: 0;
-    right: 0; 
-    width: 200px; /* Ширина изображение */
+    top: -30px;
+    right: -50px; 
+    width: 250px; /* Ширина изображение */
     height: auto; /* Сохраняем пропорции изображения */
 }
 
