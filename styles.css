@@ -123,9 +123,9 @@ h2 {
 
 .corner-image {
     position: absolute; 
-    top: -40px;
-    right: -50px; 
-    width: 250px; 
+    top: -30px;
+    right: -40px; 
+    width: 220px; 
     height: auto; 
 } 
 
@@ -138,17 +138,17 @@ h2 {
 }  */
 
 
-@media (max-width: 768px) { 
+/* @media (max-width: 768px) { 
     .corner-image {
-        top: -120px;
+        top: -140px;
         right: -100px; 
         width: 350px; 
     }
-}
+} */
 
 @media (max-width: 480px) { 
     .corner-image {
-        top: -120px;
+        top: -140px;
         right: -100px; 
         width: 350px; 
     }
